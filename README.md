@@ -34,7 +34,7 @@ The following packages are needed to build:
 - avr-gcc >= 4.7.1
 - avr-libc >= 1.8
 
-Once these have been installed, run 'make' from Bootjack's root directory.
+Once these have been installed, run `make` from Bootjack's root directory.
 This will build the default project and create `build/bootjack.elf` and
 `build/bootjack.hex`. When changing target architectures or build options, its
 easiest to copy and rename `config/default.mk` and then modify the first line
