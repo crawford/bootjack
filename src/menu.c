@@ -21,7 +21,7 @@
 #include "menu.h"
 
 static bool menu_items_exec_choice(const char *title, const struct menu_item **items);
-static inline const struct menu_item *menu_items_get_choice(const char *title, const struct menu_item **items);
+static inline const struct menu_item * menu_items_get_choice(const char *title, const struct menu_item **items);
 static inline int menu_draw(const char *title, const struct menu_item **items);
 
 void menu_exec(const struct menu *menu)
@@ -51,7 +51,7 @@ static bool menu_items_exec_choice(const char *title, const struct menu_item **i
 	}
 }
 
-const struct menu_item *menu_items_get_choice(const char *title, const struct menu_item **items)
+static inline const struct menu_item * menu_items_get_choice(const char *title, const struct menu_item **items)
 {
 	int sel = 0;
 	int count = menu_draw(title, items);
