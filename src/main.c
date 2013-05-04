@@ -1,10 +1,18 @@
 #include <stdbool.h>
 #include <avr/interrupt.h>
+#include <avr/pgmspace.h>
+#include <avr/version.h>
 #include "avr109.h"
 #include "vt100.h"
 #include "serial.h"
 #include "menu.h"
 #include "examplemenu.h"
+
+#define GCC_VERSION    (__GNUC__ * 10000 +     \
+                        __GNUC_MINOR__ * 100 + \
+                        __GNUC_PATCHLEVEL__)
+#define GCC_4_7_1      (40701)
+#define LIBC_1_8_0     (10800)
 
 static inline void mcu_init(void);
 static inline void mcu_kill(void);
@@ -56,7 +64,11 @@ static inline void mcu_kill(void)
 
 static inline bool app_present(void)
 {
-	const __flash volatile uint16_t *start = CONFIG_APP_START_ADDR;
-	return (*start != 0xFFFF);
+#if (GCC_VERSION < GCC_4_7_1) && (__AVR_LIBC_VERSION__ >= LIBC_1_8_0)
+	uint16_t start = pgm_read_word_far(CONFIG_APP_START_ADDR);
+#else
+	uint16_t start = *(const __flash uint16_t *)CONFIG_APP_START_ADDR;
+#endif
+	return (start != 0xFFFF);
 }
 
