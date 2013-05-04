@@ -134,10 +134,14 @@ bool avr109_process(void)
 		}
 		else if (command == 'x')   // Enable LED
 		{
+			// Discard the LED option
+			serial_get_char();
 			led_on();
 		}
 		else if (command == 'y')   // Disable LED
 		{
+			// Discard the LED option
+			serial_get_char();
 			led_off();
 		}
 		else if (command == 'S')   // Get software identifier
