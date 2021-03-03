@@ -1,7 +1,6 @@
-Bootjack
-========
+# Bootjack #
 
-#What is Bootjack?#
+## What is Bootjack? ##
 Bootjack is a bootloader and configuration framework for AVR microprocessors.
 It is designed to function much like the BIOS on your PC. It uses the avr109
 protocol to communicate over serial (RS-232) with a host-based bootload client
@@ -9,13 +8,13 @@ protocol to communicate over serial (RS-232) with a host-based bootload client
 in C, which makes it very easy to read and modify. Despite the fact that its
 written in C, Bootjack can fit into as little as 1KB of flash.
 
-##Bootloader?##
+### Bootloader? ###
 The bootloader is a self-modifying program that allows the processor to flash
 itself. Instead of using an ISP, JTAG, or HVPP programmer to flash the device,
 the image can be transfered over a serial connection. This is especially
 useful if you don't have a hardware programmer readily available.
 
-##Configuration framework?##
+### Configuration framework? ###
 Bootjack's configuration framework makes it easy to create command-line
 interfaces. Menus are the core of the interface and can be easily defined with
 the 'menu' structure. A simple example is provided for reference. When run, the
@@ -24,7 +23,7 @@ example menu looks like the following:
 ![Main Menu](/doc/assets/topmenu.png)  
 ![Submenu](/doc/assets/submenu.png)
 
-#How do I build this?#
+## How do I build this? ##
 Note: Bootjack currently requires avr-gcc 4.7.1 or greater to build. Support
 for avr-gcc 4.7.0 and earlier is coming soon.  
 
